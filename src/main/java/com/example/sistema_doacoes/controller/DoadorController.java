@@ -1,6 +1,6 @@
 package com.example.sistema_doacoes.controller;
 
-import com.example.sistema_doacoes.dto.DoadorDto;
+//import com.example.sistema_doacoes.dto.DoadorDto;
 import com.example.sistema_doacoes.model.Doador;
 import com.example.sistema_doacoes.service.DoadorService;
 import lombok.RequiredArgsConstructor;
@@ -16,21 +16,21 @@ import java.util.List;
 @Slf4j
 public class DoadorController {
 
-    private final DoadorService doadorService;
-
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<Doador> getAllDoadores() {
-        log.info("Buscando todos os doadores");
-        return doadorService.getAllDoadores();
-    }
-
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public DoadorDto createDoador(@RequestBody DoadorDto doadorDto) {
-        log.info("Criando doador: {}");
-        return doadorService.createDoador(doadorDto);
-    }
+//    private final DoadorService doadorService;
+//
+//    @GetMapping
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<Doador> getAllDoadores() {
+//        log.info("Buscando todos os doadores");
+//        return doadorService.getAllDoadores();
+//    }
+//
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public DoadorDto createDoador(@RequestBody DoadorDto doadorDto) {
+//        log.info("Criando doador: {}");
+//        return doadorService.createDoador(doadorDto);
+//    }
 
     // Adicione outros métodos conforme necessário
 }

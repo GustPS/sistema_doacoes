@@ -15,41 +15,41 @@ import java.util.List;
 @Slf4j
 public class ItemDoacaoController {
 
-    private final ItemDoacaoService itemDoacaoService;
-
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<ItemDoacao> getAllItens() {
-        log.info("Buscando todos os itens de doação");
-        return itemDoacaoService.getAllItens();
-    }
-
-    @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public ItemDoacao getItemById(@PathVariable Long id) {
-        log.info("Buscando item de doação com ID: {}", id);
-        return itemDoacaoService.getItemById(id)
-                .orElseThrow(() -> new RuntimeException("Item não encontrado com ID: " + id));
-    }
-
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public ItemDoacao insertItem(@RequestBody ItemDoacao item) {
-        log.info("Inserindo novo item de doação: {}", item);
-        return itemDoacaoService.insertItem(item);
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public ItemDoacao updateItem(@PathVariable Long id, @RequestBody ItemDoacao itemDetails) {
-        log.info("Atualizando item de doação com ID: {}", id);
-        return itemDoacaoService.updateItem(id, itemDetails);
-    }
-
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteItem(@PathVariable Long id) {
-        log.info("Apagando item de doação com ID: {}", id);
-        itemDoacaoService.deleteItem(id);
-    }
+//    private final ItemDoacaoService itemDoacaoService;
+//
+//    @GetMapping
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<ItemDoacao> getAllItens() {
+//        log.info("Buscando todos os itens de doação");
+//        return itemDoacaoService.getAllItens();
+//    }
+//
+//    @GetMapping("/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public ItemDoacao getItemById(@PathVariable Long id) {
+//        log.info("Buscando item de doação com ID: {}", id);
+//        return itemDoacaoService.getItemById(id)
+//                .orElseThrow(() -> new RuntimeException("Item não encontrado com ID: " + id));
+//    }
+//
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public ItemDoacao insertItem(@RequestBody ItemDoacao item) {
+//        log.info("Inserindo novo item de doação: {}", item);
+//        return itemDoacaoService.insertItem(item);
+//    }
+//
+//    @PutMapping("/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public ItemDoacao updateItem(@PathVariable Long id, @RequestBody ItemDoacao itemDetails) {
+//        log.info("Atualizando item de doação com ID: {}", id);
+//        return itemDoacaoService.updateItem(id, itemDetails);
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void deleteItem(@PathVariable Long id) {
+//        log.info("Apagando item de doação com ID: {}", id);
+//        itemDoacaoService.deleteItem(id);
+//    }
 }

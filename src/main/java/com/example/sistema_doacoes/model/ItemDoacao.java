@@ -15,7 +15,7 @@ import java.util.Set;
 public class ItemDoacao {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Alterado para IDENTITY para auto incremento no banco
     private Long id;
 
     @Column(name = "nome", length = 100, nullable = false)
@@ -27,6 +27,22 @@ public class ItemDoacao {
     @Column(name = "categoria", length = 100)
     private String categoria;
 
-    @ManyToMany(mappedBy = "itens", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany
+    @JoinTable(
+            name = "doacao_item", // Tabela de junção
+            joinColumns = @JoinColumn(name = "item_doacao_id"), // Chave estrangeira para ItemDoacao
+            inverseJoinColumns = @JoinColumn(name = "doacao_id") // Chave estrangeira para Doacao
+    )
     private Set<Doacao> doacoes;
+
+    // Método toString para facilitar a depuração
+    @Override
+    public String toString() {
+        return "ItemDoacao{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", categoria='" + categoria + '\'' +
+                '}';
+    }
 }

@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class Doacao {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Alterado para IDENTITY para auto incremento no banco
     private Long id;
 
     @ManyToOne
@@ -29,9 +29,26 @@ public class Doacao {
     @Column(name = "data_doacao", nullable = false)
     private LocalDate dataDoacao;
 
+    @Column(name = "descricao", length = 500)
+    private String descricao;
+
     @Column(name = "valor", nullable = false)
     private Double valor;
 
-    @Column(name = "descricao", length = 500)
-    private String descricao;
+    @Column(name = "campanha", length = 500)
+    private String campanha;
+
+    // Método toString para facilitar a depuração
+    @Override
+    public String toString() {
+        return "Doacao{" +
+                "id=" + id +
+                ", doador=" + doador +
+                ", instituicao=" + instituicao +
+                ", dataDoacao=" + dataDoacao +
+                ", descricao='" + descricao + '\'' +
+                ", valor=" + valor +
+                ", campanha='" + campanha + '\'' +
+                '}';
+    }
 }
