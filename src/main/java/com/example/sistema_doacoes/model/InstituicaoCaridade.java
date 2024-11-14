@@ -3,7 +3,6 @@ package com.example.sistema_doacoes.model;
 import jakarta.persistence.*;
 import lombok.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.Set;
 
 @Entity
@@ -31,6 +30,12 @@ public class InstituicaoCaridade {
     @Column(name = "contato", length = 100, nullable = false)
     private String contato;
 
+    @Column(name = "cnpj", length = 18, nullable = false, unique = true)
+    private String cnpj;
+
+    @Column(name = "endereco", length = 200)
+    private String endereco;
+
     @OneToMany(mappedBy = "instituicao", targetEntity = Doacao.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Doacao> doacoes;
@@ -38,4 +43,6 @@ public class InstituicaoCaridade {
     @OneToMany(mappedBy = "instituicao", targetEntity = Campanha.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Campanha> campanhas;
+
+
 }

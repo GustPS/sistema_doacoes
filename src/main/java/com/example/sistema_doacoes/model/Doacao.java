@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "doacao")
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 public class Doacao {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Alterado para IDENTITY para auto incremento no banco
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne
@@ -26,6 +27,10 @@ public class Doacao {
     @JoinColumn(name = "instituicao_id", nullable = false)
     private InstituicaoCaridade instituicao;
 
+    @ManyToOne
+    @JoinColumn(name = "item_id") // Associa um único item à doação
+    private ItemDoacao item;
+
     @Column(name = "data_doacao", nullable = false)
     private LocalDate dataDoacao;
 
@@ -35,20 +40,7 @@ public class Doacao {
     @Column(name = "valor", nullable = false)
     private Double valor;
 
-    @Column(name = "campanha", length = 500)
-    private String campanha;
-
-    // Método toString para facilitar a depuração
-    @Override
-    public String toString() {
-        return "Doacao{" +
-                "id=" + id +
-                ", doador=" + doador +
-                ", instituicao=" + instituicao +
-                ", dataDoacao=" + dataDoacao +
-                ", descricao='" + descricao + '\'' +
-                ", valor=" + valor +
-                ", campanha='" + campanha + '\'' +
-                '}';
-    }
+    @ManyToOne
+    @JoinColumn(name = "campanha_id")
+    private Campanha campanha;
 }
