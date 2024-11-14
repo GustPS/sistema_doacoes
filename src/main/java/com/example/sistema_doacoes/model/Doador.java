@@ -22,6 +22,9 @@ public class Doador {
     @Column(name = "nome", length = 150, nullable = false)
     private String nome;
 
+    @Column(name = "email", length = 100, nullable = false)
+    private String email; // Campo de email adicionado
+
     @Column(name = "contato", length = 100, nullable = false)
     private String contato;
 
